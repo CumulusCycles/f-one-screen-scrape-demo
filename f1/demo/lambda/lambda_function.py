@@ -11,13 +11,12 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def get_archive_years(results_year_ahchors):
+def get_archive_years(results_year_anchors):
     results_years_links = []
     results_years_link_item = {}
-    for results_year_ahchor in results_year_ahchors:
-        results_year_ahchor_span = results_year_ahchor.find_element(By.TAG_NAME, 'span')
-        results_years_link_item['year'] = results_year_ahchor_span.get_attribute('innerHTML')
-        results_years_link_item['link'] = results_year_ahchor.get_attribute('href')
+    for results_year_anchor in results_year_anchors:
+        results_years_link_item['year'] = results_year_anchor.get_attribute('innerHTML')
+        results_years_link_item['link'] = results_year_anchor.get_attribute('href')
         results_years_links.append(results_years_link_item)
         results_years_link_item = {}
     return results_years_links
@@ -52,6 +51,10 @@ def get_results_categories_links(results_archive_filter_divs):
     results_categories_links = results_categories_links[:-1]
     return results_categories_links
 
+def do_hover(driver, ele):
+    hover = ActionChains(driver).move_to_element(ele)
+    hover.perform()
+
 def init_page(driver):
     delete_iframes(driver)
 
@@ -61,26 +64,23 @@ def init_page(driver):
     primary_link_items = primary_link_list.find_elements(By.TAG_NAME, 'li')
     results_item = primary_link_items[4]
     results_link = results_item.find_element(By.TAG_NAME, 'a')
-    print('Hover over Results link...')
-    results_hover = ActionChains(driver).move_to_element(results_link)
-    results_hover.perform()
+    do_hover(driver, results_link)
 
     print('\nFind Results Archive Link...')
     nav_header = results_item.find_element(By.CSS_SELECTOR, 'div[class="nav-header"]')
     results_anchors = nav_header.find_elements(By.TAG_NAME, 'a')
     archive_link = results_anchors[3]
-    archive_hover = ActionChains(driver).move_to_element(archive_link)
-    archive_hover.perform()
+    do_hover(driver, archive_link)
 
     print('Navigating to Results Archive page...')
     archive_link.click()
     return
 
 def get_results_archive_table_rows(driver):
-    result_title = driver.find_element(By.CLASS_NAME, 'ResultsArchiveTitle').text
+    result_title = driver.find_element(By.TAG_NAME, 'h1').text
     print(f'\tProcessing {result_title}...')
 
-    results_archive_table = driver.find_element(By.CSS_SELECTOR, 'table[class="resultsarchive-table"]')
+    results_archive_table = driver.find_element(By.CSS_SELECTOR, 'table[class="f1-table f1-table-with-data w-full"]')
     results_archive_table_body = results_archive_table.find_element(By.TAG_NAME, 'tbody')
     results_archive_table_rows = results_archive_table_body.find_elements(By.TAG_NAME, 'tr')
     return results_archive_table_rows
@@ -89,38 +89,49 @@ def process_race_results(results_archive_table_row, results_year):
     results_year_data_item = {}
 
     results_archive_table_cells = results_archive_table_row.find_elements(By.TAG_NAME, 'td')
-    grand_prix_row = results_archive_table_cells[1].find_element(By.TAG_NAME, 'a')
-    date_row = results_archive_table_cells[2]
 
-    winner_row = results_archive_table_cells[3]
-    winner_row_cells = winner_row.find_elements(By.TAG_NAME, 'span')
+    grand_prix_row = results_archive_table_cells[0]
+    date_row = results_archive_table_cells[1]
 
-    car_row = results_archive_table_cells[4]
-    laps_row = results_archive_table_cells[5]
-    time_row = results_archive_table_cells[6]
+    winner_row_cell = results_archive_table_cells[2]
+    winner_name_content = winner_row_cell.find_elements(By.TAG_NAME, 'span')
+    winner_f_name = winner_name_content[0].get_attribute('innerHTML')
+    winner_l_name = winner_name_content[1].text
+
+    car_row = results_archive_table_cells[3]
+    laps_row = results_archive_table_cells[4]
+
+    time_row = results_archive_table_cells[5]
+    time_row_para = time_row.find_element(By.TAG_NAME, 'p')
 
     results_year_data_item['year'] = results_year
     results_year_data_item['grand_prix'] = grand_prix_row.text
     results_year_data_item['date'] = date_row.text
-    results_year_data_item['winner'] = winner_row_cells[0].text + " " + winner_row_cells[1].text
+    results_year_data_item['winner'] = winner_f_name + ' ' + winner_l_name
     results_year_data_item['car'] = car_row.text
     results_year_data_item['laps'] = laps_row.text
-    results_year_data_item['time'] = time_row.text
+    results_year_data_item['time'] = time_row_para.get_attribute('innerHTML')
     return results_year_data_item
 
 def process_driver_results(results_archive_table_row, results_year):
     drivers_results_years_data_item = {}
     
     results_archive_table_cells = results_archive_table_row.find_elements(By.TAG_NAME, 'td')
-    driver_pos = results_archive_table_cells[1]
-    driver_name = results_archive_table_cells[2]
-    nationality = results_archive_table_cells[3]
-    car_row = results_archive_table_cells[4]
-    pts = results_archive_table_cells[5]
+
+    driver_pos = results_archive_table_cells[0]
+    
+    driver_name_cell = results_archive_table_cells[1]
+    driver_name_content = driver_name_cell.find_elements(By.TAG_NAME, 'span')
+    driver_f_name = driver_name_content[0].get_attribute('innerHTML')
+    driver_l_name = driver_name_content[1].text
+
+    nationality = results_archive_table_cells[2]
+    car_row = results_archive_table_cells[3]
+    pts = results_archive_table_cells[4]
 
     drivers_results_years_data_item['year'] = results_year
     drivers_results_years_data_item['driver_pos'] = driver_pos.text
-    drivers_results_years_data_item['driver_name'] = driver_name.text
+    drivers_results_years_data_item['driver_name'] = driver_f_name + ' ' + driver_l_name
     drivers_results_years_data_item['nationality'] = nationality.text
     drivers_results_years_data_item['car'] = car_row.text
     drivers_results_years_data_item['pts'] = pts.text
@@ -130,9 +141,10 @@ def process_team_results(results_archive_table_row, results_year):
     team_results_years_data_item = {}
 
     results_archive_table_cells = results_archive_table_row.find_elements(By.TAG_NAME, 'td')
-    team_pos = results_archive_table_cells[1]
-    team_name = results_archive_table_cells[2]
-    pts = results_archive_table_cells[3]
+
+    team_pos = results_archive_table_cells[0]
+    team_name = results_archive_table_cells[1]
+    pts = results_archive_table_cells[2]
 
     team_results_years_data_item['year'] = results_year
     team_results_years_data_item['team_name'] = team_name.text
@@ -188,8 +200,9 @@ def handler(event, context):
         init_page(driver)
 
         print('\nOn Results Archive page...')
-        results_archive_filter = driver.find_element(By.CLASS_NAME, 'resultsarchive-filter-container')
-        results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="resultsarchive-filter-wrap"]')
+        results_archive_filter = driver.find_element(By.CSS_SELECTOR, 'div[class="f1-container container"]')    
+        results_archive_filter_divs_container = results_archive_filter.find_element(By.CSS_SELECTOR, 'div[class="grid max-laptop:gap-xs laptop:grid-cols-3 laptop:divide-x"]')
+        results_archive_filter_divs = results_archive_filter_divs_container.find_elements(By.TAG_NAME, 'details')
 
         print('Getting Result Categories links...')
         results_categories_links = get_results_categories_links(results_archive_filter_divs[1])
@@ -204,20 +217,17 @@ def handler(event, context):
             driver.refresh()
 
             print('\tGetting Archive year links...')
-            results_archive_filter = driver.find_element(By.CLASS_NAME, 'resultsarchive-filter-container')
-            results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="resultsarchive-filter-wrap"]')
+            results_archive_filter = driver.find_element(By.CSS_SELECTOR, 'div[class="f1-container container"]')
+            results_archive_filter_divs_container = results_archive_filter.find_element(By.CSS_SELECTOR, 'div[class="grid max-laptop:gap-xs laptop:grid-cols-3 laptop:divide-x"]')
+            results_archive_filter_divs = results_archive_filter_divs_container.find_elements(By.TAG_NAME, 'details')
 
             results_years = results_archive_filter_divs[0]
-            results_year_ahchors = results_years.find_elements(By.TAG_NAME, 'a')
-            results_years_links = get_archive_years(results_year_ahchors)
-            
+            results_year_anchors = results_years.find_elements(By.TAG_NAME, 'a')
+            results_years_links = get_archive_years(results_year_anchors)
             results_years_links_cpy = results_years_links[:5] # Only process 5 records for local demo
-
-            result_cat_lower = result_cat_title.lower()
 
             match result_cat_title:
                 case 'RACES':
-                    print('RACES...')
                     for results_years_link in results_years_links_cpy:
                         driver.get(f"https://www.formula1.com/en/results.html/{results_years_link['year']}/races.html")
                         results_archive_table_rows = get_results_archive_table_rows(driver)
@@ -228,7 +238,6 @@ def handler(event, context):
                     resp_data['race_results'] = results_years_data
 
                 case 'DRIVERS':
-                    print('DRIVERS...')
                     for results_years_link in results_years_links_cpy:
                         driver.get(f"https://www.formula1.com/en/results.html/{results_years_link['year']}/drivers.html")
                         results_archive_table_rows = get_results_archive_table_rows(driver)
@@ -239,7 +248,6 @@ def handler(event, context):
                     resp_data['driver_results'] = drivers_results_years_data
 
                 case 'TEAMS':
-                    print('TEAMS...')
                     # Then go to Teams results, then loop through years
                     for results_years_link in results_years_links_cpy:
                         if int(results_years_link['year']) >= 1958:

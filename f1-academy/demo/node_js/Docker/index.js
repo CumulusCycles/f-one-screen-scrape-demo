@@ -35,7 +35,6 @@ async function doHover(driver, ele) {
 async function initDriver() {
     let chromeOptions = new chrome.Options();
     chromeOptions.addArguments('--headless', '--disable-gpu', '--no-sandbox');
-    // chromeOptions.addArguments('--start-maximized', '--disable-gpu', '--no-sandbox');
 
     let driver = new Builder()
         .forBrowser('chrome')
@@ -167,7 +166,7 @@ app.get("/", async (req, res) => {
                 let driverNationality = await driverListItems[1].findElement(By.tagName('h4')).getText();
                 let driverSupporter = await driverListItems[2].findElement(By.tagName('h4')).getText();
 
-                commonDriverInfoPropsDiv = await driver.findElement(By.css('div[class="common-driver-info--props"]'));
+                let commonDriverInfoPropsDiv = await driver.findElement(By.css('div[class="common-driver-info--props"]'));
                 await driver.executeScript('arguments[0].scrollIntoView();', commonDriverInfoPropsDiv);
 
                 let driverFlagSpan = await driver.findElement(By.css('span[class="common-driver-info--flag"]'));

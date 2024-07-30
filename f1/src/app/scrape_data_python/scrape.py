@@ -18,13 +18,13 @@ race_results_file_name = 'race_results_data.json'
 driver_results_file_name = 'driver_results_data.json'
 team_results_file_name = 'team_results_data.json'
 
-def get_archive_years(results_year_ahchors):
+def get_archive_years(results_year_anchors):
     results_years_links = []
     results_years_link_item = {}
-    for results_year_ahchor in results_year_ahchors:
-        results_year_ahchor_span = results_year_ahchor.find_element(By.TAG_NAME, 'span')
-        results_years_link_item['year'] = results_year_ahchor_span.get_attribute('innerHTML')
-        results_years_link_item['link'] = results_year_ahchor.get_attribute('href')
+    for results_year_anchor in results_year_anchors:
+        results_year_anchor_span = results_year_anchor.find_element(By.TAG_NAME, 'span')
+        results_years_link_item['year'] = results_year_anchor_span.get_attribute('innerHTML')
+        results_years_link_item['link'] = results_year_anchor.get_attribute('href')
         results_years_links.append(results_years_link_item)
         results_years_link_item = {}
     return results_years_links
@@ -78,10 +78,10 @@ def init_page(driver):
     return
 
 def get_results_archive_table_rows(driver):
-    result_title = driver.find_element(By.CLASS_NAME, 'ResultsArchiveTitle').text
+    result_title = driver.find_element(By.CLASS_NAME, 'results_archiveTitle').text
     print(f'\tProcessing {result_title}...')
 
-    results_archive_table = driver.find_element(By.CSS_SELECTOR, 'table[class="resultsarchive-table"]')
+    results_archive_table = driver.find_element(By.CSS_SELECTOR, 'table[class="results_archive-table"]')
     results_archive_table_body = results_archive_table.find_element(By.TAG_NAME, 'tbody')
     results_archive_table_rows = results_archive_table_body.find_elements(By.TAG_NAME, 'tr')
     return results_archive_table_rows
@@ -194,8 +194,8 @@ def lambda_handler(event, context):
 
     init_page(driver)
 
-    results_archive_filter = driver.find_element(By.CLASS_NAME, 'resultsarchive-filter-container')
-    results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="resultsarchive-filter-wrap"]')
+    results_archive_filter = driver.find_element(By.CLASS_NAME, 'results_archive-filter-container')
+    results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="results_archive-filter-wrap"]')
 
     print('Getting Result Categories links...')
     results_categories_links = get_results_categories_links(results_archive_filter_divs[1])
@@ -209,12 +209,12 @@ def lambda_handler(event, context):
         driver.get(results_categories_link['link'])
         driver.refresh()
 
-        results_archive_filter = driver.find_element(By.CLASS_NAME, 'resultsarchive-filter-container')
-        results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="resultsarchive-filter-wrap"]')
+        results_archive_filter = driver.find_element(By.CLASS_NAME, 'results_archive-filter-container')
+        results_archive_filter_divs = results_archive_filter.find_elements(By.CSS_SELECTOR, 'div[class="results_archive-filter-wrap"]')
 
         results_years = results_archive_filter_divs[0]
-        results_year_ahchors = results_years.find_elements(By.TAG_NAME, 'a')
-        results_years_links = get_archive_years(results_year_ahchors)
+        results_year_anchors = results_years.find_elements(By.TAG_NAME, 'a')
+        results_years_links = get_archive_years(results_year_anchors)
         
         results_years_links_cpy = results_years_links[:3] # Only process 3 records for demo
 

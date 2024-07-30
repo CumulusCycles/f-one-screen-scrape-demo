@@ -8,8 +8,10 @@ Deployemnt on both local dev machine, including ```Docker``` Continers, and on `
 ```AWS``` Resources provisioned via ```Terraform```.
 
 
-## F1 Academy App
+## F1 Academy App 
 These Apps (Python, Node.js) scrape the [F1 Academy](https://www.f1academy.com/) site.
+
+- [Demo App execution videos](demo_vids)
 
 ### Local Python execution
 - See [README.md](f1-academy/demo/python) in [f1-academy/demo/python](f1-academy/demo/python) folder
@@ -37,6 +39,8 @@ These Apps (Python, Node.js) scrape the [F1 Academy](https://www.f1academy.com/)
 ## F1 App(s)
 These Apps (Python, Node.js) scrape the [F1](https://www.formula1.com/) site.
 
+- [Demo App executio videos](demo_vids)
+
 ### Local Python execution
 - See [README.md](f1/demo/python) in [f1/demo/python](f1/demo/python) folder
 
@@ -47,7 +51,7 @@ These Apps (Python, Node.js) scrape the [F1](https://www.formula1.com/) site.
 - See [README.md](f1/demo/node_js/Docker) in [f1/demo/node_js/Docker](f1/demo/node_js/Docker) folder
 
 ### Local Docker (Lambda / Python) execution
-- See [README.md](f1/demo/lambda) in [f1/demo/node_js/lambda](f1/demo/lambda) folder
+- See [README.md](f1/demo/lambda) in [f1/demo/lambda](f1/demo/lambda) folder
 
 
 ### AWS
@@ -69,5 +73,5 @@ These Apps (Python, Node.js) scrape the [F1](https://www.formula1.com/) site.
 
 
 ## Notes
-- All data on the F1 and F1 Academy sites is Copyright by Formula One World Championship Limited
+- All data on the [F1](https://www.formula1.com/) and [F1 Academy](https://www.f1academy.com/) sites is Copyright by Formula One World Championship Limited
 - If DOM structure on the F1 or F1 Academy sites change, Scrape Apps (Python and Node.js) will need to be modified

@@ -2,21 +2,13 @@
 ## Pre-reqs
 - python and pip must be installed on your local machine
 
-## Apps
-- ```scrape_race_results.py```: Scrape only Race Results from 1950 - current
-- ```scrape_driver_standings.py```: Scrape only Driver Standings from 1950 - current
-- ```scrape_race_standings.py```: Scrape only Team Standings from 1958 - current
-- ```scrape.py```: Scrape all Race, Driver and Team results
-
 ## Steps
 1. Open a Terminal and execute the following
     ```
     pip install selenium webdriver-manager
     ```
 
-2. Open appropriate python file you wish to execute
-
-3. Edit code to run in ```Headless mode``` or ```Launch Browser mode```
+2. Edit code ```scrape.py``` to run in ```Headless mode``` or ```Launch Browser mode```
 
     ## Headless mode
     - uncomment lines
@@ -40,7 +32,7 @@
         driver.maximize_window()
         ```
 
-4. Write data to ```json``` file (Optional)
+3. Write data to ```json``` file (Optional)
     - uncomment ```import json``` on line #2
     - uncomment lines to write to file
     - ex
@@ -50,14 +42,14 @@
         f.close()
         ```
 
-5. Write data to console (Optional)
+4. Write data to console (Optional)
     - uncomment line to print to console
     - ex
         ```python
         print(json.dumps(results_years_data))
         ```
 
-6. In Terminal, execute the folllowing
+5. In Terminal, execute the folllowing
     ```
     python FILE_NAME.py
     ```

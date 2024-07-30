@@ -1,0 +1,522 @@
+[
+    {
+        "year": "2024",
+        "driver_pos": "1",
+        "driver_name": "Max Verstappen",
+        "nationality": "NED",
+        "car": "Red Bull Racing Honda RBPT",
+        "pts": "277"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "2",
+        "driver_name": "Lando Norris",
+        "nationality": "GBR",
+        "car": "McLaren Mercedes",
+        "pts": "199"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "3",
+        "driver_name": "Charles Leclerc",
+        "nationality": "MON",
+        "car": "Ferrari",
+        "pts": "177"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "4",
+        "driver_name": "Oscar Piastri",
+        "nationality": "AUS",
+        "car": "McLaren Mercedes",
+        "pts": "167"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "5",
+        "driver_name": "Carlos Sainz",
+        "nationality": "ESP",
+        "car": "Ferrari",
+        "pts": "162"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "6",
+        "driver_name": "Lewis Hamilton",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "150"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "7",
+        "driver_name": "Sergio Perez",
+        "nationality": "MEX",
+        "car": "Red Bull Racing Honda RBPT",
+        "pts": "131"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "8",
+        "driver_name": "George Russell",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "116"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "9",
+        "driver_name": "Fernando Alonso",
+        "nationality": "ESP",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "49"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "10",
+        "driver_name": "Lance Stroll",
+        "nationality": "CAN",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "24"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "11",
+        "driver_name": "Nico Hulkenberg",
+        "nationality": "GER",
+        "car": "Haas Ferrari",
+        "pts": "22"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "12",
+        "driver_name": "Yuki Tsunoda",
+        "nationality": "JPN",
+        "car": "RB Honda RBPT",
+        "pts": "22"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "13",
+        "driver_name": "Daniel Ricciardo",
+        "nationality": "AUS",
+        "car": "RB Honda RBPT",
+        "pts": "12"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "14",
+        "driver_name": "Oliver Bearman",
+        "nationality": "GBR",
+        "car": "Ferrari",
+        "pts": "6"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "15",
+        "driver_name": "Pierre Gasly",
+        "nationality": "FRA",
+        "car": "Alpine Renault",
+        "pts": "6"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "16",
+        "driver_name": "Kevin Magnussen",
+        "nationality": "DEN",
+        "car": "Haas Ferrari",
+        "pts": "5"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "17",
+        "driver_name": "Esteban Ocon",
+        "nationality": "FRA",
+        "car": "Alpine Renault",
+        "pts": "5"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "18",
+        "driver_name": "Alexander Albon",
+        "nationality": "THA",
+        "car": "Williams Mercedes",
+        "pts": "4"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "19",
+        "driver_name": "Zhou ",
+        "nationality": "CHN",
+        "car": "Kick Sauber Ferrari",
+        "pts": "0"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "20",
+        "driver_name": "Logan Sargeant",
+        "nationality": "USA",
+        "car": "Williams Mercedes",
+        "pts": "0"
+    },
+    {
+        "year": "2024",
+        "driver_pos": "21",
+        "driver_name": "Valtteri Bottas",
+        "nationality": "FIN",
+        "car": "Kick Sauber Ferrari",
+        "pts": "0"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "1",
+        "driver_name": "Max Verstappen",
+        "nationality": "NED",
+        "car": "Red Bull Racing Honda RBPT",
+        "pts": "575"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "2",
+        "driver_name": "Sergio Perez",
+        "nationality": "MEX",
+        "car": "Red Bull Racing Honda RBPT",
+        "pts": "285"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "3",
+        "driver_name": "Lewis Hamilton",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "234"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "4",
+        "driver_name": "Fernando Alonso",
+        "nationality": "ESP",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "206"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "5",
+        "driver_name": "Charles Leclerc",
+        "nationality": "MON",
+        "car": "Ferrari",
+        "pts": "206"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "6",
+        "driver_name": "Lando Norris",
+        "nationality": "GBR",
+        "car": "McLaren Mercedes",
+        "pts": "205"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "7",
+        "driver_name": "Carlos Sainz",
+        "nationality": "ESP",
+        "car": "Ferrari",
+        "pts": "200"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "8",
+        "driver_name": "George Russell",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "175"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "9",
+        "driver_name": "Oscar Piastri",
+        "nationality": "AUS",
+        "car": "McLaren Mercedes",
+        "pts": "97"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "10",
+        "driver_name": "Lance Stroll",
+        "nationality": "CAN",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "74"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "11",
+        "driver_name": "Pierre Gasly",
+        "nationality": "FRA",
+        "car": "Alpine Renault",
+        "pts": "62"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "12",
+        "driver_name": "Esteban Ocon",
+        "nationality": "FRA",
+        "car": "Alpine Renault",
+        "pts": "58"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "13",
+        "driver_name": "Alexander Albon",
+        "nationality": "THA",
+        "car": "Williams Mercedes",
+        "pts": "27"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "14",
+        "driver_name": "Yuki Tsunoda",
+        "nationality": "JPN",
+        "car": "AlphaTauri Honda RBPT",
+        "pts": "17"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "15",
+        "driver_name": "Valtteri Bottas",
+        "nationality": "FIN",
+        "car": "Alfa Romeo Ferrari",
+        "pts": "10"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "16",
+        "driver_name": "Nico Hulkenberg",
+        "nationality": "GER",
+        "car": "Haas Ferrari",
+        "pts": "9"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "17",
+        "driver_name": "Daniel Ricciardo",
+        "nationality": "AUS",
+        "car": "AlphaTauri Honda RBPT",
+        "pts": "6"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "18",
+        "driver_name": "Zhou ",
+        "nationality": "CHN",
+        "car": "Alfa Romeo Ferrari",
+        "pts": "6"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "19",
+        "driver_name": "Kevin Magnussen",
+        "nationality": "DEN",
+        "car": "Haas Ferrari",
+        "pts": "3"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "20",
+        "driver_name": "Liam Lawson",
+        "nationality": "NZL",
+        "car": "AlphaTauri Honda RBPT",
+        "pts": "2"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "21",
+        "driver_name": "Logan Sargeant",
+        "nationality": "USA",
+        "car": "Williams Mercedes",
+        "pts": "1"
+    },
+    {
+        "year": "2023",
+        "driver_pos": "22",
+        "driver_name": "Nyck De Vries",
+        "nationality": "NED",
+        "car": "AlphaTauri Honda RBPT",
+        "pts": "0"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "1",
+        "driver_name": "Max Verstappen",
+        "nationality": "NED",
+        "car": "Red Bull Racing RBPT",
+        "pts": "454"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "2",
+        "driver_name": "Charles Leclerc",
+        "nationality": "MON",
+        "car": "Ferrari",
+        "pts": "308"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "3",
+        "driver_name": "Sergio Perez",
+        "nationality": "MEX",
+        "car": "Red Bull Racing RBPT",
+        "pts": "305"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "4",
+        "driver_name": "George Russell",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "275"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "5",
+        "driver_name": "Carlos Sainz",
+        "nationality": "ESP",
+        "car": "Ferrari",
+        "pts": "246"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "6",
+        "driver_name": "Lewis Hamilton",
+        "nationality": "GBR",
+        "car": "Mercedes",
+        "pts": "240"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "7",
+        "driver_name": "Lando Norris",
+        "nationality": "GBR",
+        "car": "McLaren Mercedes",
+        "pts": "122"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "8",
+        "driver_name": "Esteban Ocon",
+        "nationality": "FRA",
+        "car": "Alpine Renault",
+        "pts": "92"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "9",
+        "driver_name": "Fernando Alonso",
+        "nationality": "ESP",
+        "car": "Alpine Renault",
+        "pts": "81"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "10",
+        "driver_name": "Valtteri Bottas",
+        "nationality": "FIN",
+        "car": "Alfa Romeo Ferrari",
+        "pts": "49"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "11",
+        "driver_name": "Daniel Ricciardo",
+        "nationality": "AUS",
+        "car": "McLaren Mercedes",
+        "pts": "37"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "12",
+        "driver_name": "Sebastian Vettel",
+        "nationality": "GER",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "37"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "13",
+        "driver_name": "Kevin Magnussen",
+        "nationality": "DEN",
+        "car": "Haas Ferrari",
+        "pts": "25"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "14",
+        "driver_name": "Pierre Gasly",
+        "nationality": "FRA",
+        "car": "AlphaTauri RBPT",
+        "pts": "23"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "15",
+        "driver_name": "Lance Stroll",
+        "nationality": "CAN",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "18"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "16",
+        "driver_name": "Mick Schumacher",
+        "nationality": "GER",
+        "car": "Haas Ferrari",
+        "pts": "12"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "17",
+        "driver_name": "Yuki Tsunoda",
+        "nationality": "JPN",
+        "car": "AlphaTauri RBPT",
+        "pts": "12"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "18",
+        "driver_name": "Zhou ",
+        "nationality": "CHN",
+        "car": "Alfa Romeo Ferrari",
+        "pts": "6"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "19",
+        "driver_name": "Alexander Albon",
+        "nationality": "THA",
+        "car": "Williams Mercedes",
+        "pts": "4"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "20",
+        "driver_name": "Nicholas Latifi",
+        "nationality": "CAN",
+        "car": "Williams Mercedes",
+        "pts": "2"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "21",
+        "driver_name": "Nyck De Vries",
+        "nationality": "NED",
+        "car": "Williams Mercedes",
+        "pts": "2"
+    },
+    {
+        "year": "2022",
+        "driver_pos": "22",
+        "driver_name": "Nico Hulkenberg",
+        "nationality": "GER",
+        "car": "Aston Martin Aramco Mercedes",
+        "pts": "0"
+    }
+]

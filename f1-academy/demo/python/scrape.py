@@ -25,18 +25,18 @@ def do_hover(ele):
     time.sleep(1)
 
 # Headless Browser
-# options = Options()
-# options.add_argument("--headless=new")
-# options.add_argument('window-size=1920x1080')
-# driver = webdriver.Chrome(service=ChromeService(
-#     ChromeDriverManager().install()), options=options)
+options = Options()
+options.add_argument("--headless=new")
+options.add_argument('window-size=1920x1080')
+driver = webdriver.Chrome(service=ChromeService(
+    ChromeDriverManager().install()), options=options)
 
 # Launch Browser
-options = Options()
-options.add_argument("--disable-notifications")
-driver = webdriver.Chrome(service=ChromeService(
-    ChromeDriverManager().install()))
-driver.maximize_window()
+# options = Options()
+# options.add_argument("--disable-notifications")
+# driver = webdriver.Chrome(service=ChromeService(
+#     ChromeDriverManager().install()))
+# driver.maximize_window()
 
 url = 'https://www.f1academy.com/'
 
