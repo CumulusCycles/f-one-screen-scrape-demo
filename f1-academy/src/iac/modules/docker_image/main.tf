@@ -26,4 +26,6 @@ resource "docker_image" "f_one_academy_scrape_image" {
 
 resource "docker_registry_image" "f_one_academy_scrape_image_registry" {
   name = "${var.ecr_repo}:latest"
+
+  depends_on = [docker_image.f_one_academy_scrape_image]
 }

@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 s3 = boto3.client('s3')
-bucket_name = 'cc-f-one-assets'
+bucket_name = 'cc-f-one-academy-assets'
 file_name = 'team_data.json'
 
 def delete_iframes(driver):

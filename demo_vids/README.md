@@ -16,7 +16,7 @@ The videos presented below show execution of the listed App(s).
 [video](https://youtu.be/aZAL3csiO7Q) | [src](../f1-academy/demo/lambda)
 
 ### AWS ( Lambda --> S3 --> S3 Event Trigger --> Lambda --> DynamoDB )
-video - tbd | [src](../f1-academy/src)
+[demo video](https://youtu.be/2ty-UUF3X4Q) | [src](../f1-academy/src)
 
 ![Arch Diagram](../img/f1_academy_arch_diagram.png?raw=true "Arch Diagram")
 

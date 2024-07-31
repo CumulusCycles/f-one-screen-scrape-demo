@@ -13,7 +13,7 @@ def persistImage(s3_resource, bucket_name, url, file_name):
 # S3
 s3 = boto3.client('s3')
 s3_resource = boto3.resource('s3')
-bucket_name = 'cc-f-one-assets'
+bucket_name = 'cc-f-one-academy-assets'
 file_name = 'team_data.json'
 current_season = str(datetime.date.today().year)
 path_to_file = current_season + '/data/' + file_name

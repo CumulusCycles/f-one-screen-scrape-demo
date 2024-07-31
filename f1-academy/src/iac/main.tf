@@ -3,10 +3,10 @@ terraform {
 
   # Uncomment after provisioning tf-state Module for Remote State Locking
   # backend "s3" {
-  #   bucket         = "cc-f-one-scrape-tf-state"
+  #   bucket         = "cc-f-one-academy-tf-state-08-01-24v01"
   #   key            = "tf-infra/terraform.tfstate"
   #   region         = "us-east-1"
-  #   dynamodb_table = "cc-f-one-scrape-tf-state"
+  #   dynamodb_table = "cc-f-one-academy-tf-state-08-01-24v01"
   #   encrypt        = true
   # }
 
@@ -24,11 +24,11 @@ terraform {
 }
 
 # Provision tf-state Module first (then add Remote State Locking)
-module "tf-state" {
-  source      = "./modules/tf-state"
-  bucket_name = local.tf_state_resource_name
-  table_name  = local.tf_state_resource_name
-}
+# module "tf-state" {
+#   source      = "./modules/tf-state"
+#   bucket_name = local.tf_state_resource_name
+#   table_name  = local.tf_state_resource_name
+# }
 
 # module "ecrRepo" {
 #   source        = "./modules/ecr_repo"

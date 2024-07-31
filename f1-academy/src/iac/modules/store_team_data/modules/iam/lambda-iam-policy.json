@@ -13,7 +13,7 @@
                 "s3:*"
             ],
             "Effect": "Allow",
-            "Resource": "arn:aws:s3:::cc-f-one-assets/*"
+            "Resource": "arn:aws:s3:::cc-f-one-academy-assets/*"
         },
         {
             "Action": [

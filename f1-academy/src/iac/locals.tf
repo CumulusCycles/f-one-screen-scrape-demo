@@ -1,8 +1,8 @@
 locals {
-  tf_state_resource_name = "cc-f-one-scrape-tf-state"
+  tf_state_resource_name = "cc-f-one-academy-tf-state-08-01-24v01"
 
   common_params = {
-    asset_bucket_name = "cc-f-one-assets"
+    asset_bucket_name = "cc-f-one-academy-assets"
 
     lambda_compatible_layer_runtimes = ["python3.10"]
     lambda_compatible_architectures  = ["x86_64"]
