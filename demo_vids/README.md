@@ -36,12 +36,12 @@ The videos presented below show execution of the listed App(s).
 [video](https://youtu.be/C_Gu9koGY4I) | [src](../f1/demo/lambda)
 
 ### AWS (Lambda (Python) --> S3 --> EventBridge --> Lambda (Python) --> DynamoDB)
-video - tbd | [src](../f1/src)
+[Terraform provisioning video](https://youtu.be/UnMmkKcQmFE) | [execution video](https://youtu.be/sjWffN2XTSY) | [src](../f1/src)
 
 ![Arch Diagram](../img/f1_arch_diagram_1.png?raw=true "Arch Diagram")
 
 ### AWS (Step Function --> AWS Batch --> ECS (Node.js) --> S3 --> EventBridge --> Lambda (Python) --> DynamoDB)
-video - tbd | [src](../f1/src)
+[Terraform provisioning video](https://youtu.be/eDH5Ee_a9Dw) | [execution video](https://youtu.be/vNEn60K1U4c) | [src](../f1/src)
 
 ![Arch Diagram](../img/f1_arch_diagram_2.png?raw=true "Arch Diagram")
 
@@ -49,3 +49,4 @@ video - tbd | [src](../f1/src)
 
 ## Note
 - All data on the [F1](https://www.formula1.com/) and [F1 Academy](https://www.f1academy.com/) sites is Copyright by Formula One World Championship Limited
+- All demo code successfully scraped sites as of 08/04/24

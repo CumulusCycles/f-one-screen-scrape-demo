@@ -75,3 +75,4 @@ These Apps (Python, Node.js) scrape the [F1](https://www.formula1.com/) site.
 ## Notes
 - All data on the [F1](https://www.formula1.com/) and [F1 Academy](https://www.f1academy.com/) sites is Copyright by Formula One World Championship Limited
 - If DOM structure on the F1 or F1 Academy sites change, Scrape Apps (Python and Node.js) will need to be modified
+- All demo code successfully scraped sites as of 08/04/24

@@ -6,7 +6,7 @@ import datetime
 
 # S3
 s3 = boto3.client('s3')
-bucket_name = 'cc-f-one-assets-07-13-24v01'
+bucket_name = 'cc-f-one-assets-08-04-24v010'
 file_name = 'team_results_data.json'
 path_to_file = 'data/teams/' + file_name
 

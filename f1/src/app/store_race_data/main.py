@@ -6,7 +6,7 @@ import datetime
 
 # S3
 s3 = boto3.client('s3')
-bucket_name = 'cc-f-one-assets-07-13-24v01'
+bucket_name = 'cc-f-one-assets-08-04-24v010'
 file_name = 'race_results_data.json'
 path_to_file = 'data/races/' + file_name
 
@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     print(f'{bucket_name}/{path_to_file}')
     
     # Read race_results_data.json data file from S3
-    resp = s3.get_object(Bucket=bucket_name, Key=path_to_file)
+    resp = s3.get_object(Bucket=bucket_name, Key=path_to_file) # RMF: Access Denied!
     content = resp['Body']
     json_obj = json.loads(content.read())
     # print(json_obj)

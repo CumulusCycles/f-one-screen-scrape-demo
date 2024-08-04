@@ -3,10 +3,10 @@ terraform {
 
   # Uncomment after provisioning tf-state Module for Remote State Locking
   # backend "s3" {
-  #   bucket         = "cc-f-one-tf-state-07-13-24v01"
+  #   bucket         = "cc-f-one-tf-state-08-04-24v010"
   #   key            = "tf-infra/terraform.tfstate"
   #   region         = "us-east-1"
-  #   dynamodb_table = "cc-f-one-tf-state-07-13-24v01"
+  #   dynamodb_table = "cc-f-one-tf-state-08-04-24v010"
   #   encrypt        = true
   # }
 

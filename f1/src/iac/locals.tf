@@ -1,6 +1,6 @@
 locals {
-  tf_state_resource_name = "cc-f-one-tf-state-07-13-24v01"
-  asset_bucket_name      = "cc-f-one-assets-07-13-24v01"
+  tf_state_resource_name = "cc-f-one-tf-state-08-04-24v010"
+  asset_bucket_name      = "cc-f-one-assets-08-04-24v010"
   asset_bucket_paths     = ["races", "drivers", "teams"]
   data_file_names        = ["race_results_data.json", "driver_results_data.json", "team_results_data.json"]
   ecr_repo_name          = "cc-f-one-scrape-repo"

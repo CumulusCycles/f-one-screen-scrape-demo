@@ -64,6 +64,10 @@ async function persistResultsData(bucketPath, resultsData, s3FileName) {
 
     const resultsDataString = JSON.stringify(resultsData);
     const pathToFile = `data/${bucketPath}/${s3FileName}`;
+    
+    console.log(`Key: ${pathToFile}`);
+    console.log(resultsDataString);
+
     const params = {
         Bucket: bucketName,
         Key: pathToFile,
@@ -73,7 +77,7 @@ async function persistResultsData(bucketPath, resultsData, s3FileName) {
         if (err) {
             // console.log('Error uploading file:', err);
         }
-    });
+    }).promise();
 
     console.log('Put complete.');
 }
@@ -121,11 +125,12 @@ app.get("/", async (req, res) => {
         await driver.sleep(1000);
 
         console.log('\nOn Results Archive page...');
-        let results_archiveFilter = await driver.findElement(By.className('results_archive-filter-container'));
-        let results_archiveFilterDivs = await results_archiveFilter.findElements(By.css('div[class="results_archive-filter-wrap"]'));
+        let resultsArchiveFilter = await driver.findElement(By.css('div[class="f1-container container"]'));
+        let resultsArchiveFilterDivsContainer = await resultsArchiveFilter.findElement(By.css('div[class="grid max-laptop:gap-xs laptop:grid-cols-3 laptop:divide-x"]'));
+        let resultsArchiveFilterDivs = await resultsArchiveFilterDivsContainer.findElements(By.tagName('details'));
 
         console.log('Getting Result Categories links...');
-        let resultsCategories = await results_archiveFilterDivs[1];
+        let resultsCategories = await resultsArchiveFilterDivs[1];
         let resultsCategorieItems = await resultsCategories.findElements(By.tagName('li'));
 
         for (let resultsCategoryItem of resultsCategorieItems) {
@@ -149,17 +154,17 @@ app.get("/", async (req, res) => {
             await driver.sleep(1000);
 
             console.log('\tGetting Archive year links...');
-            let results_archiveFilter = await driver.findElement(By.className('results_archive-filter-container'));
-            let results_archiveFilterDivs = await results_archiveFilter.findElements(By.css('div[class="results_archive-filter-wrap"]'));
+            let resultsArchiveFilter = await driver.findElement(By.css('div[class="f1-container container"]'));
+            let resultsArchiveFilterDivsContainer = await resultsArchiveFilter.findElement(By.css('div[class="grid max-laptop:gap-xs laptop:grid-cols-3 laptop:divide-x"]'));
+            let resultsArchiveFilterDivs = await resultsArchiveFilterDivsContainer.findElements(By.tagName('details'));
 
-            let resultsYears = results_archiveFilterDivs[0];
+            let resultsYears = resultsArchiveFilterDivs[0];
             let resultsYearAnchors = await resultsYears.findElements(By.tagName('a'));
 
             let resultsYearsLinks = [];
             let resultsYearsLinkItem = {};
             for (let resultsYearAnchor of resultsYearAnchors) {
-                let resultsYearAnchorSpan = await resultsYearAnchor.findElement(By.tagName('span'));
-                resultsYearsLinkItem['year'] = await resultsYearAnchorSpan.getAttribute('innerHTML');
+                resultsYearsLinkItem['year'] = await resultsYearAnchor.getAttribute('innerHTML');
                 resultsYearsLinkItem['link'] = await resultsYearAnchor.getAttribute('href');
                 resultsYearsLinks.push(resultsYearsLinkItem);
                 resultsYearsLinkItem = {};
@@ -172,32 +177,37 @@ app.get("/", async (req, res) => {
                     for (let resultsYearsLink of resultsYearsLinksCpy) {
                         await driver.get(`https://www.formula1.com/en/results.html/${resultsYearsLink['year']}/races.html`);
 
-                        let resultTitle = await driver.findElement(By.className('results_archiveTitle')).getText();
+                        let resultTitle = await driver.findElement(By.tagName('h1')).getText();
                         console.log(`\tProcessing ${resultTitle}...`);
 
-                        let results_archiveTable = await driver.findElement(By.css('table[class="results_archive-table"]'));
-                        let results_archiveTableBody = await results_archiveTable.findElement(By.tagName('tbody'));
-                        let results_archiveTableRows = await results_archiveTableBody.findElements(By.tagName('tr'));
+                        let resultsArchiveTable = await driver.findElement(By.css('table[class="f1-table f1-table-with-data w-full"]'));
+                        let resultsArchiveTableBody = await resultsArchiveTable.findElement(By.tagName('tbody'));
+                        let resultsArchiveTableRows = await resultsArchiveTableBody.findElements(By.tagName('tr'));
 
-                        for (let results_archiveTableRow of results_archiveTableRows) {
-                            let results_archiveTableCells = await results_archiveTableRow.findElements(By.tagName('td'));
-                            let grandPrixRow = await results_archiveTableCells[1].findElement(By.tagName('a'));
-                            let dateRow = results_archiveTableCells[2];
+                        for (let resultsArchiveTableRow of resultsArchiveTableRows) {
+                            let resultsArchiveTableCells = await resultsArchiveTableRow.findElements(By.tagName('td'));
 
-                            let winnerRow = results_archiveTableCells[3];
-                            let winnerRowCells = await winnerRow.findElements(By.tagName('span'));
+                            let grandPrixRow = resultsArchiveTableCells[0];
+                            let dateRow = resultsArchiveTableCells[1];
+                            
+                            let winnerRowCell = resultsArchiveTableCells[2];
+                            let winnerNameContent = await winnerRowCell.findElements(By.tagName('span'));
+                            let winnerFName = await winnerNameContent[0].getAttribute('innerHTML');
+                            let winnerLName = await winnerNameContent[1].getText();
 
-                            let carRow = results_archiveTableCells[4];
-                            let lapsRow = results_archiveTableCells[5];
-                            let timeRow = results_archiveTableCells[6];
+                            let carRow = resultsArchiveTableCells[3];
+                            let lapsRow =  resultsArchiveTableCells[4];
+                            
+                            let timeRow = resultsArchiveTableCells[5];
+                            let timeRowPara = await timeRow.findElement(By.tagName('p'));
 
                             resultsYearDataItem['year'] = resultsYearsLink['year'];
                             resultsYearDataItem['grand_prix'] = await grandPrixRow.getText();
                             resultsYearDataItem['date'] = await dateRow.getText();
-                            resultsYearDataItem['winner'] = await winnerRowCells[0].getText() + " " + await winnerRowCells[1].getText();
+                            resultsYearDataItem['winner'] = `${winnerFName} ${winnerLName}`;
                             resultsYearDataItem['car'] = await carRow.getText();
                             resultsYearDataItem['laps'] = await lapsRow.getText();
-                            resultsYearDataItem['time'] = await timeRow.getText();
+                            resultsYearDataItem['time'] = await timeRowPara.getAttribute('innerHTML');
                             resultsYearsData.push(resultsYearDataItem);
                             resultsYearDataItem = {};
                         }
@@ -210,24 +220,31 @@ app.get("/", async (req, res) => {
                 case 'DRIVERS':
                     for (let resultsYearsLink of resultsYearsLinksCpy) {
                         await driver.get(`https://www.formula1.com/en/results.html/${resultsYearsLink['year']}/drivers.html`);
-                        let resultTitle = await driver.findElement(By.className('results_archiveTitle')).getText();
+
+                        let resultTitle = await driver.findElement(By.tagName('h1')).getText();
                         console.log(`\tProcessing ${resultTitle}...`);
 
-                        let results_archiveTable = await driver.findElement(By.css('table[class="results_archive-table"]'));
-                        let results_archiveTableBody = await results_archiveTable.findElement(By.tagName('tbody'));
-                        let results_archiveTableRows = await results_archiveTableBody.findElements(By.tagName('tr'));
+                        let resultsArchiveTable = await driver.findElement(By.css('table[class="f1-table f1-table-with-data w-full"]'));
+                        let resultsArchiveTableBody = await resultsArchiveTable.findElement(By.tagName('tbody'));
+                        let resultsArchiveTableRows = await resultsArchiveTableBody.findElements(By.tagName('tr'));
 
-                        for (let results_archiveTableRow of results_archiveTableRows) {
-                            let results_archiveTableCells = await results_archiveTableRow.findElements(By.tagName('td'));
-                            let driverPos = results_archiveTableCells[1];
-                            let driverName = results_archiveTableCells[2];
-                            let nationality = results_archiveTableCells[3];
-                            let carRow = results_archiveTableCells[4];
-                            let pts = results_archiveTableCells[5];
+                        for (let resultsArchiveTableRow of resultsArchiveTableRows) {
+                            let resultsArchiveTableCells = await resultsArchiveTableRow.findElements(By.tagName('td'));
+
+                            let driverPos = resultsArchiveTableCells[0];
+
+                            let driverNameCell = resultsArchiveTableCells[1];
+                            let driverNameContent = await driverNameCell.findElements(By.tagName('span'));
+                            let driverFName = await driverNameContent[0].getAttribute('innerHTML');
+                            let driverLName = await driverNameContent[1].getText();
+
+                            let nationality = resultsArchiveTableCells[2];
+                            let carRow = resultsArchiveTableCells[3];
+                            let pts = resultsArchiveTableCells[4];
 
                             driversResultsYearsDataItem['year'] = resultsYearsLink['year'];
                             driversResultsYearsDataItem['driver_pos'] = await driverPos.getText();
-                            driversResultsYearsDataItem['driver_name'] = await driverName.getText();
+                            driversResultsYearsDataItem['driver_name'] =  `${driverFName} ${driverLName}`;
                             driversResultsYearsDataItem['nationality'] = await nationality.getText();
                             driversResultsYearsDataItem['car'] = await carRow.getText();
                             driversResultsYearsDataItem['pts'] = await pts.getText();
@@ -244,18 +261,20 @@ app.get("/", async (req, res) => {
                     for (let resultsYearsLink of resultsYearsLinksCpy) {
                         if (parseInt(resultsYearsLink['year']) >= 1958) {
                             await driver.get(`https://www.formula1.com/en/results.html/${resultsYearsLink['year']}/team.html`);
-                            let resultTitle = await driver.findElement(By.className('results_archiveTitle')).getText();
+
+                            let resultTitle = await driver.findElement(By.tagName('h1')).getText();
                             console.log(`\tProcessing ${resultTitle}...`);
 
-                            let results_archiveTable = await driver.findElement(By.css('table[class="results_archive-table"]'));
-                            let results_archiveTableBody = await results_archiveTable.findElement(By.tagName('tbody'));
-                            let results_archiveTableRows = await results_archiveTableBody.findElements(By.tagName('tr'));
+                            let resultsArchiveTable = await driver.findElement(By.css('table[class="f1-table f1-table-with-data w-full"]'));
+                            let resultsArchiveTableBody = await resultsArchiveTable.findElement(By.tagName('tbody'));
+                            let resultsArchiveTableRows = await resultsArchiveTableBody.findElements(By.tagName('tr'));
 
-                            for (let results_archiveTableRow of results_archiveTableRows) {
-                                let results_archiveTableCells = await results_archiveTableRow.findElements(By.tagName('td'));
-                                let teamPos = results_archiveTableCells[1];
-                                let teamName = results_archiveTableCells[2];
-                                let pts = results_archiveTableCells[3];
+                            for (let resultsArchiveTableRow of resultsArchiveTableRows) {
+                                let resultsArchiveTableCells = await resultsArchiveTableRow.findElements(By.tagName('td'));
+
+                                let teamPos = resultsArchiveTableCells[0];
+                                let teamName = resultsArchiveTableCells[1];
+                                let pts = resultsArchiveTableCells[2];
 
                                 teamsResultsYearsDataItem['year'] = resultsYearsLink['year'];
                                 teamsResultsYearsDataItem['team_name'] = await teamName.getText();
